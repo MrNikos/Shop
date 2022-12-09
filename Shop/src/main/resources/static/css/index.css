@@ -1,0 +1,95 @@
+@font-face{
+    font-family:'Redonda script One';
+    src:url('/font/Redonda-script-One.ttf');
+}
+
+.grid {
+
+    margin: 20px;
+    display: grid;
+    font-weight: bold;
+    background-color: #e27193;
+    border-radius: 30px;
+}
+.gridh {
+    margin: 20px;
+    display: grid;
+    font-weight: bold;
+    background-color: #e27193;
+    border-radius: 30px;
+    font-family: 'Redonda script One';
+}
+.item1 {
+    grid-column: span 1;
+    margin: 20px;
+    margin-left: 90px;
+}
+
+.item2 {
+    grid-column: span 4;
+    grid-row: span 1;
+    margin: 20px;
+    margin-right: 80px;
+    text-align: left;
+}
+
+.item3 {
+    grid-row: span 1;
+    margin: -4px;
+}
+
+.item10 {
+    grid-column: span 2;
+
+}
+
+.item {
+
+
+}
+.container{
+
+}
+.n1{
+    border-radius: 300px;
+    width: 26%;
+    margin: 5px;
+
+}
+.item4 {
+    grid-column: span 2;
+
+}
+.item5 {
+    margin: 5px;
+    grid-column-start: span 4;
+    margin-left: 290px;
+}
+.b1 {
+    color: #e27193;
+    margin: 10px;
+}
+.n2{
+    width: 29%;
+    height: 35%;
+
+
+}
+.btn{
+    background-color: #e27193;
+}
+.item6 {
+    grid-column-start: 7;
+    grid-row-start: 1;
+    margin: 6px;
+    margin-left: -54px;
+}
+.item7 {
+    grid-column-start: 7;
+    margin-left: -45px;
+    grid-row-start: 2;
+}
+.h1{
+
+}
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров: </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="product.css">
+</head>
+<header>
+    <div class="container">
+        <div class="gridh">
+            <div class="item1">
+                <img class="n1" src="img/images.png">
+            </div>
+            <div class="item2"><h1>Купи и деньги не жми!</h1></div>
+            <div class="item3">
+                <form class="b1" action="/auth/login">
+                <button type="" action="/auth/login" class="btn btn-outline-light me-2">Войти</button>
+            </form></div>
+            <div class="item6">
+                <form class="b1" action="/auth/login">
+                <button type="" action="" class="btn btn-outline-light me-2" >Корзина</button></form>
+            </div>
+            <div class="item5">
+                <form class="w-100 me-3" role="search">
+                <input type="search" class="form-control" placeholder="Я ищу" aria-label="Search"></form>
+            </div>
+            <div class="item7">
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0 dropdown">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>
+                        <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">
+                            <li><a class="dropdown-item" href="#">Вход</a></li>
+                            <li><a class="dropdown-item" href="#">Регистрация</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Выйти</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                    </div>
+                    <div>
+                    </div>
+                    </header>
+<body>
+<div class="container">
+    <div class="body">
+        <form th:method="POST" th:action="@{/product/search}">
+            <fieldset>
+                <legend>Выберите параметры для сортировки, поиска, фильтрации</legend>
+                <br>
+                <label for="search">Поиск по наименованию</label>
+                <input type="search" name="search"  th:value="*{value_search}" id="search">
+                <br>
+                <p>Цена, ₽</p>
+                <label for="ot">От</label>
+                <input type="text" name="ot"  th:value="*{value_price_ot}" id="ot">
+                <label for="do">До</label>
+                <input type="text" name="do"  th:value="*{value_price_do}" id="do">
+                <br>
+                <br>
+                <input type="radio" id="ascending_price" name="price" value="sorted_by_ascending_price">
+                <label for="ascending_price">Отсортировать по возрастанию цены</label>
+                <br>
+                <br>
+                <input type="radio" id="descending_price" name="price" value="sorted_by_descending_price">
+                <label for="descending_price">Отсортировать по убыванию цены</label>
+                <p>Категория товаров: </p>
+                <input type="radio" id="furniture" name="category" value="furniture">
+                <label for="furniture">Мебель</label>
+                <br>
+                <br>
+                <input type="radio" id="appliances" name="category" value="appliances">
+                <label for=appliances>Бытовая техника</label>
+                <br>
+                <br>
+                <input type="radio" id="clothes" name="category" value="clothes">
+                <label for="clothes">Одежда</label>
+                <br>
+                <br>
+                <input type="submit" value="Найти">
+            </fieldset>
+        </form>
+        <h3>Результат: </h3>
+        <div th:each="product : ${search_product}">
+            <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="80px">
+            <br>
+            <br>
+            <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+            <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+        </div>
+        <hr>
+        <h3>Доступные товары: </h3>
+        <div th:each="product : ${products}">
+            <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="80px">
+            <br>
+            <br>
+            <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}" id="title"></a>
+            <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script th:src="@{/js/index.js}"></script>
+</body>
+<footer>
+    <div class="container">
+        <div class="grid">
+            <p class="col-md-4 mb-0 text-black">nomoc@bk.ru</p>
+        </div>
+    </div>
+</footer>
+</html>
