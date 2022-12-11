@@ -1,45 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Авторизация</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
 <!--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
-    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
-
+    <link rel="icon" href="img/iconpizza.png" type="iconpizza.png">
+    <link th:href="@{/css/login.css}" type="text/css" rel="stylesheet">
 </head>
-<body>
+<header>
+    <div class="container">
+        <div class="gridh">
+            <div class="item1">
+                <p><a href="/product"> <img class="n1" th:src="@{/img/images.png}"></a></p>
+            </div>
+            <div class="item2"><h1>Купи и деньги не жми!</h1></div>
+            <div class="item3">
+                <form class="b1" th:method="POST" th:action="@{/logout}">
+                    <button type="" action="" class="btn btn-outline-light me-2">Магазин</button>
+                </form></div>
+            <div class="item6">
+                                <form class="b1" action="/auth/registration">-->
+                                    <button type="" class="btn btn-outline-light me-2" >Регистрация</button></form>
+            </div>
+            <div class="item5">
+                <!--                <form class="w-100 me-3" role="search">-->
+                <!--                    <input type="search" class="form-control" placeholder="Я ищу" aria-label="Search"></form>-->
+                <!--            </div>-->
+                <div class="item7">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 dropdown">
+                            <!--                        Заглушка пользователь-->
+                            <!--                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
+                            <!--                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>-->
+                            <!--                        <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">-->
+                            <!--                            <li><a class="dropdown-item" href="#">Вход</a></li>-->
+                            <!--                            <li><a class="dropdown-item" href="#">Регистрация</a></li>-->
+                            <!--                            <li><hr class="dropdown-divider"></li>-->
+                            <!--                            <li><a class="dropdown-item" href="#">Выйти</a></li>-->
+                            <!--                        </ul>-->
+                        </div>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+</header>
+<body class="text-center ">
+<div class="container">
+    <img class="mb-4" src="images.png" alt="" width="72">
+    <form method="post" action="/process_login">
+        <div class="form-floating">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
-              <h3>Вход</h3>
-
-
-<form  method="post" action="/process_login">
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-    <label for="username">Введите логин: </label>
-    <input type="text" placeholder="Введите логин" name="username" id="username">
-    <br>
-    <label for="password">Введите пароль: </label>
-    <input type="password" placeholder="Введите пароль" name="password" id="password">
-    <br>
-    <input type="submit" value="Войти">
-    <div th:if="${param.error}" style="color: red">
-        Неправильный логин или пароль
-    </div>
-</form>
-<a href="/auth/registration">Регистрация</a>
-<br>
-
-<br>
-
-    <a  href="/product">Магазин</a>
-
-
+            <label for="username">Логин: </label>
+            <input type="text" class="form-control" placeholder="Введите логин" name="username" id="username">
+        </div>
+        <div class="form-floating">
+            <label for="password">Пароль: </label>
+            <input type="password" class="form-control" placeholder="Введите пароль" name="password" id="password">
+            <input type="submit" class="btn btn-light" value="Войти">
+            <div th:if="${param.error}" style="color: red">
+                Неправильный логин или пароль
+            </div>
+            <p></p>
+        </div>
+    </form>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script th:src="@{/js/index.js}"></script>
+
 </body>
+<footer>
+    <div class="container">
+        <div class="grid">
+            <p class="col-md-4 mb-0 text-black">nomoc@bk.ru</p>
+        </div>
+    </div>
+</footer>
 </html>

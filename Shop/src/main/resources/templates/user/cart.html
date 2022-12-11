@@ -2,24 +2,74 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Корзина</title>
+    <title>Список товаров: </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
+    <link rel="icon" href="img/iconpizza.png" type="iconpizza.png">
+    <link rel="stylesheet" href="product.css">
 </head>
+<header>
+    <div class="container">
+        <div class="gridh">
+            <div class="item1">
+                <p><a href="/product"><img class="n1" th:src="@{/img/images.png}"></a></p>
+            </div>
+            <div class="item2"><h1>Все и сразу!</h1></div>
+            <div class="item3">
+                <form class="b1" action="/index">
+                    <button type="" action="/index" class="btn btn-outline-light me-2">Магазин</button>
+                </form></div>
+            <div class="item6">
+                <form class="b1" action="/auth/registration">
+                    <button type="" class="btn btn-outline-light me-2" >Регистрация</button></form>
+            </div>
+            <!--                <div class="item5">-->
+            <!--                <form class="w-100 me-3" role="search">-->
+            <!--                <input type="search" class="form-control" placeholder="Я ищу" aria-label="Search"></form>-->
+        </div>
+        <div class="item7">
+            <div class="d-flex align-items-center">
+                <div class="flex-shrink-0 dropdown">
+<!--                                            Заглушка пользователь-->
+<!--                                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>-->
+<!--                                            <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">-->
+<!--                                                <li><a class="dropdown-item" href="#">Вход</a></li>-->
+<!--                                                <li><a class="dropdown-item" href="#">Регистрация</a></li>-->
+<!--                                                <li><hr class="dropdown-divider"></li>-->
+<!--                                                <li><a class="dropdown-item" href="#">Выйти</a></li>-->
+<!--                                            </ul>-->
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+</header>
 <body>
-<form>
-    <input type="button" value="Вернуться в личный кабинет" onclick="history.back()">
-</form>
-<br>
-<br>
+<div class="container">
 <h3>Корзина товаров</h3>
+<div class="row row-cols-4">
 <div th:each="product : ${cart_product}">
-    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="80cm" height="160cm">
     <br>
     <br>
     <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <a th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить</a>
 </div>
+</div>
 <h3 th:text="'Итоговая цена: ' + ${price}"></h3>
-<a href="/order/create">Оформить заказ</a>
+<a class="btn btn-outline-light me-2" href="/order/create">Оформить заказ</a>
+</div>
+</div>
+</div>
 </body>
+<footer>
+    <div class="container">
+        <div class="grid">
+            <p class="col-md-4 mb-0 text-black">nomoc@bk.ru</p>
+        </div>
+    </div>
+</footer>
 </html>

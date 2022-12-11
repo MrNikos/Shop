@@ -43,6 +43,13 @@
 
 }
 
+.item {
+
+
+}
+.container{
+
+}
 .n1{
     border-radius: 300px;
     width: 26%;
@@ -60,7 +67,7 @@
 }
 .b1 {
     color: #e27193;
-
+    margin: 10px;
 }
 .n2{
     width: 29%;
@@ -73,13 +80,16 @@
 }
 .item6 {
     grid-column-start: 7;
-    grid-row-start: 2;
+    grid-row-start: 1;
+    margin: 6px;
     margin-left: -54px;
 }
 .item7 {
-    grid-column-start: span 4;
+    grid-column-start: 7;
+    margin-left: -45px;
+    grid-row-start: 2;
 }
-.rounded-circle{
-    margin: 20px;
+.h1{
+
 }
 

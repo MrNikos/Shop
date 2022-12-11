@@ -58,10 +58,11 @@ public class PersonService {
     @Transactional
     public void updatePassword(int id, String password){
         personRepository.updatePersonById(id,passwordEncoder.encode(password));
+
     }
     // Данный метод позволяет обновить данные пользователя
     @Transactional
-    public void updatePerson(int id, Person person){
+    public void updatePerson(int id,  Person person){
         person.setId(id);
         personRepository.save(person);
     }

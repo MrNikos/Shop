@@ -5,40 +5,75 @@
     <title>Админ панель</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <link rel="icon" href="img/iconpizza.png" type="iconpizza.png">
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
 </head>
+<header>
+    <div class="container">
+        <div class="gridh">
+            <div class="item1">
+                <p><a href="/product"><img class="n1" th:src="@{/img/images.png}"></a></p>
+            </div>
+            <div class="item2"><h1>Купи и деньги не жми!</h1></div>
+            <div class="item3">
+                <form class="b1" th:method="POST" th:action="@{/logout}">
+                    <button type="" action="" class="btn btn-outline-light me-2">Выйти</button>
+                </form></div>
+            <div class="item6">
+<!--                <form class="b1" action="/auth/registration">-->
+<!--                    <button type="" class="btn btn-outline-light me-2" >Регистрация</button></form>-->
+            </div>
+            <div class="item5">
+<!--                <form class="w-100 me-3" role="search">-->
+<!--                    <input type="search" class="form-control" placeholder="Я ищу" aria-label="Search"></form>-->
+<!--            </div>-->
+            <div class="item7">
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0 dropdown">
+                        <!--                        Заглушка пользователь-->
+                        <!--                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
+                        <!--                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>-->
+                        <!--                        <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">-->
+                        <!--                            <li><a class="dropdown-item" href="#">Вход</a></li>-->
+                        <!--                            <li><a class="dropdown-item" href="#">Регистрация</a></li>-->
+                        <!--                            <li><hr class="dropdown-divider"></li>-->
+                        <!--                            <li><a class="dropdown-item" href="#">Выйти</a></li>-->
+                        <!--                        </ul>-->
+                    </div>
+                    <div>
+                    </div>
+                    <div>
+                    </div>
+</header>
 <body>
-<h3>Личный кабинет администратора</h3>
-<form th:method="POST" th:action="@{/logout}">
-    <input type="submit" value="Выйти из личного кабинета">
-</form>
-<br>
-<a href="/auth/updatePassword">Изменить пароль</a>
-<br>
-<br>
-<br>
-<a href="/admin/person">Пользователи</a>
-<br>
-<br>
-<a href="/admin/product/add">Добавить товар</a>
-<br>
-<br>
-<h3>Каталог товаров: </h3>
-<hr>
+<div class="container">
+    <div class="row row-cols-auto">
+        <div class="col"><a class="btn btn-outline-light me-2" href="/auth/updatePassword">Изменить пароль</a></div>
+        <div class="col"><a class="btn btn-outline-light me-2" href="/admin/person">Пользователи</a></div>
+        <div class="col"><a class="btn btn-outline-light me-2" href="/admin/product/add">Добавить товар</a></div>
+    </div>
+    <div class="row row-cols-4">
 <div th:each="product : ${products}">
-    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="80cm" height="160cm">
     <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
-    <p th:text="'Описание: ' + ${product.getDescription()}"></p>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
     <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
     <p th:text="'Категория товара: ' + ${product.getCategory().getName()}"></p>
-    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
-    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
-    <hr>
+    <a class="btn btn-outline-light me-2" th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
+    <a class="btn btn-outline-light me-2" th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script th:src="@{/js/index.js}"></script>
+</div>
 </body>
+<footer>
+    <div class="container">
+        <div class="grid">
+            <p class="col-md-4 mb-0 text-black">nomoc@bk.ru</p>
+        </div>
+    </div>
+</footer>
 </html>

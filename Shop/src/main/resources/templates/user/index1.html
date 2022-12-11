@@ -18,11 +18,11 @@
             <div class="item2"><h1>Все и сразу!</h1></div>
             <div class="item3">
                 <form class="b1" action="/auth/login">
-                    <button type="" th:action="@{/logout}" class="btn btn-outline-light me-2">Выйти</button>
+                    <button type="" action="/auth/login" class="btn btn-outline-light me-2">Войти</button>
                 </form></div>
             <div class="item6">
                 <form class="b1" action="/cart">
-                    <button type="" class="btn btn-outline-light me-2">Корзина</button></form>
+                    <button type="" class="btn btn-outline-light me-2" >Корзина</button></form>
             </div>
 <!--            <div class="item5">-->
 <!--                <form class="w-100 me-3" role="search">-->
@@ -32,7 +32,7 @@
                 <div class="d-flex align-items-center">
                     <div class="flex-shrink-0 dropdown">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img th:src="@{/img/user.png}" alt="mdo" width="64" height="64" class="rounded-circle"></a>
+                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>
                         <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">
                             <li><a class="dropdown-item" href="#">Вход</a></li>
                             <li><a class="dropdown-item" href="#">Регистрация</a></li>
@@ -43,13 +43,20 @@
 
 </header>
 <body>
-<div class="container">
-    <div class="row row-cols-auto">
-<a class="btn btn-outline-light me-2" href="/auth/updatePassword">Изменить пароль</a>
-<form  method="get" th:action="@{/orders}">
-    <input class="btn btn-outline-light me-2" type="submit" value="Заказы">
+<h3>Личный кабинет пользователя</h3>
+<!--<a href="/logout">Выйти из личного кабинета</a>-->
+<form method="post" th:action="@{/logout}">
+    <input type="submit" value="Выйти из личного кабинета">
 </form>
-    </div>
+<br>
+<a href="/auth/updatePassword">Изменить пароль</a>
+<br>
+<form method="get" th:action="@{/cart}">
+    <input type="submit" value="Корзина">
+</form>
+<form method="get" th:action="@{/orders}">
+    <input type="submit" value="Заказы">
+</form>
 <form th:method="POST" th:action="@{/product/search}">
     <fieldset>
         <legend>Выберите параметры для сортировки, поиска, фильтрации</legend>
@@ -70,39 +77,32 @@
         <br>
         <input type="radio" id="descending_price" name="price" value="sorted_by_descending_price">
         <label for="descending_price">Отсортировать по убыванию цены</label>
-<!--        <p>Категория товаров: </p>-->
-<!--        <input type="radio" id="furniture" name="category" value="furniture">-->
-<!--        <label for="furniture">Мебель</label>-->
-<!--        <br>-->
-<!--        <br>-->
-<!--        <input type="radio" id="appliances" name="category" value="appliances">-->
-<!--        <label for=appliances>Бытовая техника</label>-->
-<!--        <br>-->
-<!--        <br>-->
-<!--        <input type="radio" id="clothes" name="category" value="clothes">-->
-<!--        <label for="clothes">Одежда</label>-->
-<!--        <br>-->
-<!--        <br>-->
+        <p>Категория товаров: </p>
+        <input type="radio" id="furniture" name="category" value="furniture">
+        <label for="furniture">Мебель</label>
         <br>
-        <input class="btn btn-outline-light me-2" type="submit" value="Найти">
+        <br>
+        <input type="radio" id="appliances" name="category" value="appliances">
+        <label for=appliances>Бытовая техника</label>
+        <br>
+        <br>
+        <input type="radio" id="clothes" name="category" value="clothes">
+        <label for="clothes">Одежда</label>
+        <br>
+        <br>
+        <input type="submit" value="Найти">
     </fieldset>
 </form>
 <h3>Доступные товары: </h3>
-    <div class="container text-center">
-            <div class="row row-cols-4">
-<div class="p-3 border bg-light" th:each="product : ${products}">
-    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="160cm" height="320cm">
+<div th:each="product : ${products}">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="80px">
+    <br>
     <br>
     <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}" id="title"></a>
-    <br>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
-    <br>
-    <a class="btn btn-outline-light me-2" th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a>
-</div>
-            </div>
-            </div>
-        </div>
-    </div>
+    <input type=@{/cart/add/{id}(id=${product.getId()})} value="Добавить в корзину">
+    <a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a>
+    <hr>
 </div>
 </body>
 <footer>
