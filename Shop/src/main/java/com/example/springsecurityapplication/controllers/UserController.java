@@ -9,6 +9,7 @@ import com.example.springsecurityapplication.repositories.CartRepository;
 import com.example.springsecurityapplication.repositories.OrderRepository;
 import com.example.springsecurityapplication.repositories.ProductRepository;
 import com.example.springsecurityapplication.security.PersonDetails;
+import com.example.springsecurityapplication.services.PersonService;
 import com.example.springsecurityapplication.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -27,17 +28,18 @@ import java.util.UUID;
 public class UserController {
 
     private final OrderRepository orderRepository;
-
+    private final PersonService personService;
     private final CartRepository cartRepository;
     private final ProductService productService;
     private final ProductRepository productRepository;
 
     @Autowired
-    public UserController(OrderRepository orderRepository, CartRepository cartRepository, ProductService productService, ProductRepository productRepository) {
+    public UserController(OrderRepository orderRepository, CartRepository cartRepository, ProductService productService, ProductRepository productRepository, PersonService personService) {
         this.orderRepository = orderRepository;
         this.cartRepository = cartRepository;
         this.productService = productService;
         this.productRepository = productRepository;
+        this.personService = personService;
     }
 
 
@@ -76,7 +78,14 @@ public class UserController {
         cartRepository.save(cart);
         return "redirect:/cart";
     }
-
+    @PostMapping("/person/edit/{id}")
+    public String editPerson(@ModelAttribute("editPerson") @Valid Person person,BindingResult bindingResult, @PathVariable("id") int id){
+        if(bindingResult.hasErrors()){
+            return "person/editPerson";
+        }
+        personService.updatePerson(id, person);
+        return "redirect:/user/person";
+    }
     @GetMapping("/cart")
     public String cart(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

@@ -48,12 +48,12 @@
 <body>
 <div class="container">
     <div class="row row-cols-auto">
-        <div class="col"><a class="btn btn-outline-light me-2" href="/auth/updatePassword">Изменить пароль</a></div>
+<!--        <div class="col"><a class="btn btn-outline-light me-2" href="/auth/updatePassword">Изменить пароль</a></div>-->
         <div class="col"><a class="btn btn-outline-light me-2" href="/admin/person">Пользователи</a></div>
         <div class="col"><a class="btn btn-outline-light me-2" href="/admin/product/add">Добавить товар</a></div>
-        <form method="get" th:action="@{/seller/ordersUsers}">
-            <input id="btn-product" type="submit" value="Заказы">
-        </form>
+<!--        <form method="get" th:action="@{/seller/ordersUsers}">-->
+<!--            <input id="btn-product" type="submit" value="Заказы">-->
+<!--        </form>-->
     </div>
     <div class="row row-cols-4">
         <div th:each="product : ${products}">

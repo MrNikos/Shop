@@ -48,7 +48,11 @@
 <body>
 <div class="container">
     <div class="row row-cols-auto">
-        <div class="col"><a class="btn btn-outline-light me-2" href="/auth/updatePassword">Изменить пароль</a></div>
+<!--        <div class="col"><a class="btn btn-outline-light me-2" href="/auth/updatePassword">Изменить пароль</a></div>-->
+<!--        <form  method="get" th:action="@{/admin/person/edit/{id}(id=${person.getId()})}">-->
+<!--            <input class="btn btn-outline-light me-2" id="btn-product" type="submit" value="Изменить пароль">-->
+<!--        </form>-->
+        <div class="col"><a class="btn btn-outline-light me-2" href="/admin/person/edit/1/">Изменить пароль</a></div>
         <div class="col"><a class="btn btn-outline-light me-2" href="/admin/person">Пользователи</a></div>
         <div class="col"><a class="btn btn-outline-light me-2" href="/admin/product/add">Добавить товар</a></div>
         <form  method="get" th:action="@{/admin/ordersUsers}">

@@ -82,6 +82,11 @@
     grid-row-start: 2;
     margin: 30px;
 }
+.item8 {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    margin: 60px;
+}
 .i1{
     align-items: center;
     max-width: 450px;

@@ -24,6 +24,9 @@
                 <form class="b1" action="/cart">
                     <button type="" class="btn btn-outline-light me-2">Корзина</button></form>
             </div>
+            <div class="item8">
+            <div class="col"><a class="btn btn-outline-light me-2" href="/admin/person/edit/2/">Изменить пароль</a></div>
+            </div>
 <!--            <div class="item5">-->
 <!--                <form class="w-100 me-3" role="search">-->
 <!--                    <input type="search" class="form-control" placeholder="Я ищу" aria-label="Search"></form>-->
@@ -45,10 +48,10 @@
 <body>
 <div class="container">
     <div class="row row-cols-auto">
-<a class="btn btn-outline-light me-2" href="/auth/updatePassword">Изменить пароль</a>
-<form  method="get" th:action="@{/orders}">
-    <input class="btn btn-outline-light me-2" type="submit" value="Заказы">
-</form>
+<!--<form  method="get" th:action="@{/admin/person/edit/{id}(id=${person.getId()})}">-->
+<!--    <input class="btn btn-outline-light me-2" id="btn-product" type="submit" value="Изменить пароль">-->
+<!--</form>-->
+
     </div>
 <form th:method="POST" th:action="@{/product/search}">
     <fieldset>

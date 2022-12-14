@@ -55,6 +55,7 @@
             <!--<form method="POST" th:action="@{/admin/order/Cansel/{id}(id=${order.getId()})}"  th:each="order : ${orders}">-->
             <div >
                 <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
+                <p th:text="'Логин пользователя: ' + ${order.getPerson().getLogin()}"></p>
                 <p th:text="'Имя пользователя: ' + ${order.getPerson().getFirstname()}"></p>
                 <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="80cm" height="160cm">
                 <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
@@ -64,11 +65,11 @@
                 <p th:text="'Статус: ' + ${order.getStatus()}"></p>
                 <!--    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4]? true : false}">Отменить заказ</button>-->
                 <!--    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[0]? true : false}">Принять заказ</button>-->
-                <a th:href="@{/admin/order/Cansel/{id}(id=${order.getId()})}"><button type="button" ><span class="btn btn-outline-light me-2">Отменён</span></button></a>
-                <a th:href="@{/admin/order/Accept/{id}(id=${order.getId()})}"><button type="button" ><span class="btn btn-outline-light me-2">Принят</span></button></a>
-                <a th:href="@{/admin/order/Register/{id}(id=${order.getId()})}"><button type="button" ><span class="btn btn-outline-light me-2">Оформлен</span></button></a>
-                <a th:href="@{/admin/order/Expect/{id}(id=${order.getId()})}"><button type="button" ><span class="btn btn-outline-light me-2">Ожидает</span></button></a>
-                <a th:href="@{/admin/order/Get/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Получен</span></button></a>
+                <a th:href="@{/admin/order/Cansel/{id}(id=${order.getId()})}"><button class="btn btn-outline-light me-2"  type="button" ><span class="span">Отменён</span></button></a>
+                <a th:href="@{/admin/order/Accept/{id}(id=${order.getId()})}"><button class="btn btn-outline-light me-2" type="button" ><span class="span">Принят</span></button></a>
+                <a th:href="@{/admin/order/Register/{id}(id=${order.getId()})}"><button class="btn btn-outline-light me-2" type="button" ><span class="span">Оформлен</span></button></a>
+                <a th:href="@{/admin/order/Expect/{id}(id=${order.getId()})}"><button class="btn btn-outline-light me-2" type="button" ><span class="span">Ожидает</span></button></a>
+                <a th:href="@{/admin/order/Get/{id}(id=${order.getId()})}"><button class="btn btn-outline-light me-2" type="button" ><span class="span">Получен</span></button></a>
                 <hr>
             </div>
         </article>
