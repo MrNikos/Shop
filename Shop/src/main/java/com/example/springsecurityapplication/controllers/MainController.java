@@ -30,7 +30,7 @@ public class MainController {
     @GetMapping("/info/{id}")
     public String infoProduct(@PathVariable("id") int id, Model model){
         model.addAttribute("product", productService.getProductId(id));
-        return "product/infoProduct";
+        return "ordersUsers";
     }
 
     @PostMapping("/search")

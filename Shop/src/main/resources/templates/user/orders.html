@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Список товаров: </title>
+    <title>Список Заказов </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
@@ -30,35 +30,48 @@
         </div>
         <div class="item7">
             <div class="d-flex align-items-center">
-<!--                <div class="flex-shrink-0 dropdown">-->
-<!--                    &lt;!&ndash;                                            Заглушка пользователь&ndash;&gt;-->
-<!--                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>-->
-<!--                    <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">-->
-<!--                        <li><a class="dropdown-item" href="#">Вход</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Регистрация</a></li>-->
-<!--                        <li><hr class="dropdown-divider"></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Выйти</a></li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-       <div>
-    </div>
-   <div>
-</div>
+                <!--                <div class="flex-shrink-0 dropdown">-->
+                <!--                    &lt;!&ndash;                                            Заглушка пользователь&ndash;&gt;-->
+                <!--                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
+                <!--                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>-->
+                <!--                    <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">-->
+                <!--                        <li><a class="dropdown-item" href="#">Вход</a></li>-->
+                <!--                        <li><a class="dropdown-item" href="#">Регистрация</a></li>-->
+                <!--                        <li><hr class="dropdown-divider"></li>-->
+                <!--                        <li><a class="dropdown-item" href="#">Выйти</a></li>-->
+                <!--                    </ul>-->
+                <!--                </div>-->
+                <div>
+                </div>
+                <div>
+                </div>
 </header>
 <body>
 <div class="container">
-<h3>Заказы</h3>
+    <h3>Заказы</h3>
     <div class="row row-cols-4">
-<div th:each="order : ${orders}">
-    <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
-    <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="80cm" height="160cm">
-    <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
-    <p th:text="'Количество: ' + ${order.getCount()}"></p>
-    <p th:text="'Цена: ' + ${order.getPrice()}"></p>
-    <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
-    <p th:text="'Статус: ' + ${order.getStatus()}"></p>
-    <hr>
+        <article th:each="order : ${orders}">
+            <!--<form method="POST" th:action="@{/admin/order/Accept/{id}(id=${order.getId()})}"  th:each="order : ${orders}">-->
+            <!--<form method="POST" th:action="@{/admin/order/Cansel/{id}(id=${order.getId()})}"  th:each="order : ${orders}">-->
+            <div >
+                <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
+                <p th:text="'Имя пользователя: ' + ${order.getPerson().getFirstname()}"></p>
+                <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="80cm" height="160cm">
+                <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
+                <p th:text="'Количество: ' + ${order.getCount()}"></p>
+                <p th:text="'Цена: ' + ${order.getPrice()}"></p>
+                <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
+                <p th:text="'Статус: ' + ${order.getStatus()}"></p>
+                <!--    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4]? true : false}">Отменить заказ</button>-->
+                <!--    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[0]? true : false}">Принять заказ</button>-->
+                <a th:href="@{/admin/order/Cansel/{id}(id=${order.getId()})}"><button type="button" ><span class="btn btn-outline-light me-2">Отменён</span></button></a>
+                <a th:href="@{/admin/order/Accept/{id}(id=${order.getId()})}"><button type="button" ><span class="btn btn-outline-light me-2">Принят</span></button></a>
+                <a th:href="@{/admin/order/Register/{id}(id=${order.getId()})}"><button type="button" ><span class="btn btn-outline-light me-2">Оформлен</span></button></a>
+                <a th:href="@{/admin/order/Expect/{id}(id=${order.getId()})}"><button type="button" ><span class="btn btn-outline-light me-2">Ожидает</span></button></a>
+                <a th:href="@{/admin/order/Get/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Получен</span></button></a>
+                <hr>
+            </div>
+        </article>
         </div>
     </div>
 </div>

@@ -1,10 +1,13 @@
 package com.example.springsecurityapplication.controllers;
 
 import com.example.springsecurityapplication.models.Image;
+import com.example.springsecurityapplication.models.Order;
 import com.example.springsecurityapplication.models.Person;
 import com.example.springsecurityapplication.models.Product;
 import com.example.springsecurityapplication.repositories.CategoryRepository;
+import com.example.springsecurityapplication.repositories.OrderRepository;
 import com.example.springsecurityapplication.security.PersonDetails;
+import com.example.springsecurityapplication.services.OrderService;
 import com.example.springsecurityapplication.services.PersonService;
 import com.example.springsecurityapplication.services.ProductService;
 import com.example.springsecurityapplication.util.ProductValidator;
@@ -21,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -37,13 +41,19 @@ public class AdminController {
     private final CategoryRepository categoryRepository;
 
     private final PersonService personService;
+    private final OrderService orderService;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public AdminController(ProductValidator productValidator, ProductService productService, CategoryRepository categoryRepository, PersonService personService) {
+    public AdminController(ProductValidator productValidator, ProductService productService, CategoryRepository categoryRepository,
+                           PersonService personService , OrderService orderService,
+                           OrderRepository orderRepository) {
         this.productValidator = productValidator;
         this.productService = productService;
         this.categoryRepository = categoryRepository;
         this.personService = personService;
+        this.orderService = orderService;
+        this.orderRepository = orderRepository;
     }
 
     //    @PreAuthorize("hasRole('ROLE_ADMIN') and hasRole('')")
@@ -217,6 +227,53 @@ public class AdminController {
     public String editProduct(@ModelAttribute("editProduct") Product product, @PathVariable("id") int id){
         productService.updateProduct(id, product);
         return "redirect:/admin";
+    }
+
+    //метод по отмене заказа
+    @GetMapping("/order/Cansel/{id}")
+    public String updateOrderCansel(@ModelAttribute("orders") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderCansel(order_status);
+        return "redirect:/admin/ordersUsers";
+    }
+
+    //метод заказ принят
+    @GetMapping("/order/Accept/{id}")
+    public String updateOrderAccept(@ModelAttribute("orders") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderAccept(order_status);
+        return "redirect:/admin/ordersUsers";
+    }
+    //метод заказ оформлен
+    @GetMapping("/order/Register/{id}")
+    public String updateOrderRegister(@ModelAttribute("orders") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderRegister(order_status);
+        return "redirect:/admin/ordersUsers";
+    }
+
+    //метод заказ ожидает
+    @GetMapping("/order/Expect/{id}")
+    public String updateOrderExpect(@ModelAttribute("orders") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderExpect(order_status);
+        return "redirect:/admin/ordersUsers";
+    }
+
+    //метод заказ Получен
+    @GetMapping("/order/Get/{id}")
+    public String updateOrderGet(@ModelAttribute("orders") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderGet(order_status);
+        return "redirect:/admin/ordersUsers";
+    }
+    @GetMapping("/ordersUsers")
+    public String ordersUser(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
+        List<Order> orderList = orderRepository.findByPerson(personDetails.getPerson());
+        model.addAttribute("orders", orderList);
+        return "/user/orders";
     }
 
     ////////////////////////////////////////ПОЛЬЗОВАТЕЛИ/////////////////////////////////////////////

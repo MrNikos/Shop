@@ -51,6 +51,9 @@
         <div class="col"><a class="btn btn-outline-light me-2" href="/auth/updatePassword">Изменить пароль</a></div>
         <div class="col"><a class="btn btn-outline-light me-2" href="/admin/person">Пользователи</a></div>
         <div class="col"><a class="btn btn-outline-light me-2" href="/admin/product/add">Добавить товар</a></div>
+        <form  method="get" th:action="@{/admin/ordersUsers}">
+            <input class="btn btn-outline-light me-2" id="btn-product" type="submit" value="Заказы">
+        </form>
     </div>
     <div class="row row-cols-4">
 <div th:each="product : ${products}">
@@ -62,6 +65,7 @@
     <p th:text="'Категория товара: ' + ${product.getCategory().getName()}"></p>
     <a class="btn btn-outline-light me-2" th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
     <a class="btn btn-outline-light me-2" th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+<!--    <a class="btn btn-outline-light me-2" th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a>-->
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
