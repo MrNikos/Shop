@@ -1,105 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>2222</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
-    <!--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
-    <link rel="icon" href="img/iconpizza.png" type="iconpizza.png">
-    <link th:href="@{/css/login.css}" type="text/css" rel="stylesheet">
-</head>
-<header>
-    <div class="container">
-        <div class="gridh">
-            <div class="item1">
-                <p><a href="/product"> <img class="n1" th:src="@{/img/images.png}"></a></p>
-            </div>
-            <div class="item2"><h1>Все и сразу!</h1></div>
-            <div class="item3">
-                <form class="b1" action="/auth/login">
-                    <button type="" action="/auth/login" class="btn btn-outline-light me-2">Войти</button>
-                </form></div>
-            <div class="item6">
-                <form class="b1" action="/auth/registration">
-                    <button type="" class="btn btn-outline-light me-2" >Регистрация</button></form>
-            </div>
-            <!--                <div class="item5">-->
-            <!--                <form class="w-100 me-3" role="search">-->
-            <!--                <input type="search" class="form-control" placeholder="Я ищу" aria-label="Search"></form>-->
-        </div>
-        <div class="item7">
-            <div class="d-flex align-items-center">
-                <div class="flex-shrink-0 dropdown">
-                    <!--                        Заглушка пользователь-->
-                    <!--                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
-                    <!--                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>-->
-                    <!--                        <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">-->
-                    <!--                            <li><a class="dropdown-item" href="#">Вход</a></li>-->
-                    <!--                            <li><a class="dropdown-item" href="#">Регистрация</a></li>-->
-                    <!--                            <li><hr class="dropdown-divider"></li>-->
-                    <!--                            <li><a class="dropdown-item" href="#">Выйти</a></li>-->
-                    <!--                        </ul>-->
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-</header>
-<body>
-<p>fdfdf</p>
-    <div class="container">
-        <div class="row row-cols-4">
-            <div th:each="img : ${product.getImageList()}">
-                <img th:src="'/img/' + ${img.getFileName()}"width="160cm" height="320cm">
-            </div>
-        </div>
-    <div>
-    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
-    <p th:text="'Описание: ' + ${product.getDescription()}"></p>
-    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
-    <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
-    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
-    <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>2222</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">-->
+<!--    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    &lt;!&ndash;    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"&ndash;&gt;-->
+<!--    &lt;!&ndash;          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">&ndash;&gt;-->
+<!--    <link rel="icon" href="img/iconpizza.png" type="iconpizza.png">-->
+<!--    <link th:href="@{/css/login.css}" type="text/css" rel="stylesheet">-->
+<!--</head>-->
+<!--<header>-->
+<!--    <div class="container">-->
+<!--        <div class="gridh">-->
+<!--            <div class="item1">-->
+<!--                <p><a href="/product"> <img class="n1" th:src="@{/img/images.png}"></a></p>-->
+<!--            </div>-->
+<!--            <div class="item2"><h1>Все и сразу!</h1></div>-->
+<!--            <div class="item3">-->
+<!--                <form class="b1" action="/auth/login">-->
+<!--                    <button type="" action="/auth/login" class="btn btn-outline-light me-2">Войти</button>-->
+<!--                </form></div>-->
+<!--            <div class="item6">-->
+<!--                <form class="b1" action="/auth/registration">-->
+<!--                    <button type="" class="btn btn-outline-light me-2" >Регистрация</button></form>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;                <div class="item5">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <form class="w-100 me-3" role="search">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <input type="search" class="form-control" placeholder="Я ищу" aria-label="Search"></form>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="item7">-->
+<!--            <div class="d-flex align-items-center">-->
+<!--                <div class="flex-shrink-0 dropdown">-->
+<!--                    &lt;!&ndash;                        Заглушка пользователь&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"></a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <ul class="dropdown-menu text-small shadow" wfd-invisible="true" style="">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <li><a class="dropdown-item" href="#">Вход</a></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <li><a class="dropdown-item" href="#">Регистрация</a></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <li><hr class="dropdown-divider"></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <li><a class="dropdown-item" href="#">Выйти</a></li>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                </div>-->
+<!--</header>-->
+<!--<body>-->
+<!--<p>fdfdf</p>-->
+<!--    <div class="container">-->
+<!--        <div class="row row-cols-4">-->
+<!--            <div th:each="img : ${product.getImageList()}">-->
+<!--                <img th:src="'/img/' + ${img.getFileName()}"width="160cm" height="320cm">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    <div>-->
+<!--    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>-->
+<!--    <p th:text="'Описание: ' + ${product.getDescription()}"></p>-->
+<!--    <p th:text="'Цена: ' + ${product.getPrice()}"></p>-->
+<!--    <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>-->
+<!--    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>-->
+<!--    <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>-->
 
-    </div>
-    </div>
-rticle th:each="order : ${orders}">
-<!--<form method="POST" th:action="@{/admin/order/Accept/{id}(id=${order.getId()})}"  th:each="order : ${orders}">-->
-<!--<form method="POST" th:action="@{/admin/order/Cansel/{id}(id=${order.getId()})}"  th:each="order : ${orders}">-->
-<div >
-    <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
-    <p th:text="'Логин пользователя: ' + ${order.getPerson().getLogin()}"></p>
-    <p th:text="'Имя пользователя: ' + ${order.getPerson().getFirstname()}"></p>
-    <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="300px">
-    <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
-    <p th:text="'Количество: ' + ${order.getCount()}"></p>
-    <p th:text="'Цена: ' + ${order.getPrice()}"></p>
-    <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
-    <p th:text="'Статус: ' + ${order.getStatus()}"></p>
-    <!--    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4]? true : false}">Отменить заказ</button>-->
-    <!--    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[0]? true : false}">Принять заказ</button>-->
-    <a th:href="@{/admin/order/Cansel/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Отменён</span></button></a>
-    <a th:href="@{/admin/order/Accept/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Принят</span></button></a>
-    <a th:href="@{/admin/order/Register/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Оформлен</span></button></a>
-    <a th:href="@{/admin/order/Expect/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Ожидает</span></button></a>
-    <a th:href="@{/admin/order/Get/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Получен</span></button></a>
-    <hr>
-</div>
-</article>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script th:src="@{/js/index.js}"></script>
-</body>
-<footer>
-    <div class="container">
-        <div class="grid">
-            <p class="col-md-4 mb-0 text-black">nomoc@bk.ru</p>
-        </div>
-    </div>
-</footer>
-</html>
+<!--    </div>-->
+<!--    </div>-->
+<!--rticle th:each="order : ${orders}">-->
+<!--&lt;!&ndash;<form method="POST" th:action="@{/admin/order/Accept/{id}(id=${order.getId()})}"  th:each="order : ${orders}">&ndash;&gt;-->
+<!--&lt;!&ndash;<form method="POST" th:action="@{/admin/order/Cansel/{id}(id=${order.getId()})}"  th:each="order : ${orders}">&ndash;&gt;-->
+<!--<div >-->
+<!--    <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>-->
+<!--    <p th:text="'Логин пользователя: ' + ${order.getPerson().getLogin()}"></p>-->
+<!--    <p th:text="'Имя пользователя: ' + ${order.getPerson().getFirstname()}"></p>-->
+<!--    <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="300px">-->
+<!--    <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>-->
+<!--    <p th:text="'Количество: ' + ${order.getCount()}"></p>-->
+<!--    <p th:text="'Цена: ' + ${order.getPrice()}"></p>-->
+<!--    <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>-->
+<!--    <p th:text="'Статус: ' + ${order.getStatus()}"></p>-->
+<!--    &lt;!&ndash;    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4]? true : false}">Отменить заказ</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[0]? true : false}">Принять заказ</button>&ndash;&gt;-->
+<!--    <a th:href="@{/admin/order/Cansel/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Отменён</span></button></a>-->
+<!--    <a th:href="@{/admin/order/Accept/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Принят</span></button></a>-->
+<!--    <a th:href="@{/admin/order/Register/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Оформлен</span></button></a>-->
+<!--    <a th:href="@{/admin/order/Expect/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Ожидает</span></button></a>-->
+<!--    <a th:href="@{/admin/order/Get/{id}(id=${order.getId()})}"><button type="button" ><span class="span">Получен</span></button></a>-->
+<!--    <hr>-->
+<!--</div>-->
+<!--</article>-->
+<!--    </div>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"-->
+<!--            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
+<!--    <script th:src="@{/js/index.js}"></script>-->
+<!--</body>-->
+<!--<footer>-->
+<!--    <div class="container">-->
+<!--        <div class="grid">-->
+<!--            <p class="col-md-4 mb-0 text-black">nomoc@bk.ru</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
+<!--</html>-->
